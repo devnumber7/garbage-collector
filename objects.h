@@ -13,6 +13,7 @@ typedef enum{
 //a custom Object structure which can either be int or pair  
 typedef struct gObjects{
 	unsigned int mark;
+	struct gObjects* next;
 	ObjectType type;
 
 	union{

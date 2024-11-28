@@ -7,12 +7,19 @@
 #define CRAZY_MACHINE_H
 
 #define STACK_MAX 256 
+#define INIT_GC_THRESHOLD
 
 
 //lets define a stack-based VM
 typedef struct {
 	Objects* stack[STACK_MAX];
 	int	size;
+	Objects* firstObj;
+
+	
+	int numObjs;
+	int maxObjs;
+	
 }VM;
 
 

@@ -11,7 +11,12 @@
 VM* newVM (){
 	VM* vm = (VM*)malloc(sizeof(VM));
 	vm -> size =0;
+
+	vm-> numObjs = 0;
+	vm -> maxObjs= INIT_GC_THRESHOLD;
 	return vm;
+
+	
 
 }
 
@@ -52,6 +57,10 @@ Objects* newObject(VM* vm , ObjectType type){
 
 	obj->type = type;
 
+	obj -> next = vm-> firstObj;
+	vm->firstObj = obj;
+
+	vm->numObjs++;
 	
 
 	return obj;
