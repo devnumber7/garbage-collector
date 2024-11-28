@@ -10,6 +10,11 @@
 #define INIT_GC_THRESHOLD
 
 
+
+/*
+Crazy machine is our stack-based virtual machine. 
+*/
+
 //lets define a stack-based VM
 typedef struct {
 	Objects* stack[STACK_MAX];
