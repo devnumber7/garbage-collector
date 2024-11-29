@@ -1,4 +1,5 @@
-#include "crazy_machine.c"
+
+#include "mark_and_sweep.h"
 
 /*
 We are going to write a simple mark and sweep algo. 
@@ -62,10 +63,10 @@ void sweep(VM* vm){
 
 void gc(VM* vm){
 
-//	int numObjs = vm->numObjs;
+	int numObjs = vm->numObjs;
+	
 	markEverything(vm);
 	sweep(vm);
-
 	vm->maxObjs = vm->numObjs *2;
 }
 

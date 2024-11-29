@@ -7,7 +7,7 @@
 #define CRAZY_MACHINE_H
 
 #define STACK_MAX 256 
-#define INIT_GC_THRESHOLD
+#define INIT_GC_THRESHOLD 25
 
 
 

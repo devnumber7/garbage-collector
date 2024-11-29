@@ -1,4 +1,5 @@
 #include "crazy_machine.h"
+#include "mark_and_sweep.h"
 #include <stdlib.h>
 #include <syslog.h>
 
@@ -11,7 +12,7 @@
 VM* newVM (){
 	VM* vm = (VM*)malloc(sizeof(VM));
 	vm -> size =0;
-
+	vm -> firstObj = NULL;
 	vm-> numObjs = 0;
 	vm -> maxObjs= INIT_GC_THRESHOLD;
 	return vm;
@@ -53,6 +54,10 @@ Objects*  pop(VM* vm){
 
 
 Objects* newObject(VM* vm , ObjectType type){
+	if (vm-> numObjs == vm -> maxObjs) 
+	{
+		gc(vm);
+	}
 	Objects* obj = (Objects*)malloc(sizeof(Objects));
 
 	obj->type = type;
